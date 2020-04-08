@@ -51,7 +51,7 @@ toB(DataF9,len)];
 recommendDemen=floor(sqrt(sqrt(size(DataSet1,1)))*2.2)
 %recommendDemen=32
 %DataP=toPeak(DataSet,len,6);
-%[inputs,PS]=mapminmax(DataSet');%归一化
+%[inputs,PS]=mapminmax(DataSet');%
 
 %inputs=DataP';
 inputs1=DataSet1';
@@ -110,7 +110,7 @@ cols=inputSize(1);
 renum=floor(cols/dimension1);
 restnum=cols-renum*dimension1;
 
-for i=1:size(Map1,1)%图元扩展
+for i=1:size(Map1,1)%脥录脭陋脌漏脮鹿
     tempR=reshape(Map1(i,:),dimension1,dimension2);
     tempG=reshape(Map2(i,:),dimension1,dimension2);
     tempB=reshape(Map3(i,:),dimension1,dimension2);
@@ -159,8 +159,11 @@ for i=1:classNum-1
     filenames_R{i+1}=[filename,'F',num2str(i)];
 end
 for i=1:length(filenames_R)
-    rmdir(filenames_R{i},'s');
-    mkdir(filenames_R{i});
+    try
+        rmdir(filenames_R{i},'s');
+    catch
+        mkdir(filenames_R{i});
+    end
 end
 
 %steps=floor(siz/len);
